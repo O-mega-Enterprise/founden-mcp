@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "founden": {
+      "command": "npx",
+      "args": ["-y", "founden-mcp"],
+      "env": {
+        "FOUNDEN_API_KEY": "{{FOUNDEN_API_KEY}}"
+      }
+    }
+  }
+}

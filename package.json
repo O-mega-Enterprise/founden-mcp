@@ -1,0 +1,39 @@
+{
+  "name": "founden-mcp",
+  "version": "0.1.0",
+  "mcpName": "io.github.O-mega-Enterprise/founden-mcp",
+  "description": "Founden MCP server. Build and iterate on a real software company through any AI agent, no browser required.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "founden-mcp": "dist/index.js"
+  },
+  "main": "dist/index.js",
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "prepare": "npm run build",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/O-mega-Enterprise/founden-mcp"
+  },
+  "homepage": "https://founden.ai",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "express": "^5.1.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": ["mcp", "founden", "ai-agent", "company-builder", "no-code", "model-context-protocol"]
+}

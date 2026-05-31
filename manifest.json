@@ -1,0 +1,60 @@
+{
+  "manifest_version": "0.3",
+  "name": "founden-mcp",
+  "version": "0.1.0",
+  "display_name": "Founden",
+  "description": "Build and run a real company from your AI agent. Describe it in plain language; Founden builds the website, app, and admin in the cloud and returns a live link.",
+  "long_description": "Founden is an AI company builder. Through one API key, your AI agent can start a build from a plain-language prompt, stream live progress, send follow-up instructions, and stop a build, all without keeping a browser open. The full product (website, customer app, admin dashboard) is built and deployed in the cloud and returned as a live link.",
+  "author": {
+    "name": "O-mega Enterprise",
+    "email": "yuma@o-mega.ai",
+    "url": "https://founden.ai"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "npx",
+      "args": ["-y", "founden-mcp"],
+      "env": {
+        "FOUNDEN_API_KEY": "${user_config.FOUNDEN_API_KEY}"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/O-mega-Enterprise/founden-mcp"
+  },
+  "homepage": "https://founden.ai",
+  "documentation": "https://founden.ai/mcp",
+  "support": "https://github.com/O-mega-Enterprise/founden-mcp/issues",
+  "tools": [
+    { "name": "build_company", "description": "Start a Founden build from a plain-language prompt. Returns an execution_id and a stream URL." },
+    { "name": "get_build", "description": "Get build status and the live preview URL." },
+    { "name": "message_build", "description": "Send a follow-up instruction to a running build." },
+    { "name": "stop_build", "description": "Stop a running build." }
+  ],
+  "user_config": {
+    "FOUNDEN_API_KEY": {
+      "type": "string",
+      "title": "Founden API Key",
+      "description": "Your Founden API key. Get one at https://founden.ai/app/build",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "keywords": [
+    "mcp", "founden", "company-builder", "no-code", "ai-agent",
+    "website-builder", "app-builder", "model-context-protocol"
+  ],
+  "license": "MIT",
+  "privacy_policies": [
+    "https://founden.ai/privacy"
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=20"
+    }
+  }
+}

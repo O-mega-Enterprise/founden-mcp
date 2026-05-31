@@ -1,0 +1,19 @@
+# Smithery configuration file: https://smithery.ai/docs/build/deployments
+# Founden MCP server: build your company over chat with one API key.
+
+build:
+  dockerBuildPath: .
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - foundenApiKey
+    properties:
+      foundenApiKey:
+        type: string
+        description: Your Founden API key. Get one at founden.ai/app/build/api
+  commandFunction:
+    |-
+    (config) => ({ command: 'npx', args: ['-y', 'founden-mcp'], env: { FOUNDEN_API_KEY: config.foundenApiKey } })
