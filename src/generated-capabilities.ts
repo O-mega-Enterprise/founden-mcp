@@ -14,7 +14,7 @@ export interface CapabilityDef {
 export const CAPABILITIES: CapabilityDef[] = [
   {
     name: "build_company",
-    description: "Start a Founden build from a plain-language prompt. Cost: 1 credit.",
+    description: "Start a Founden build from a plain-language prompt. Cost: metered, charged for the compute it uses.",
     method: "POST",
     path: "/v1/builds",
     inputSchema: {
@@ -33,7 +33,7 @@ export const CAPABILITIES: CapabilityDef[] = [
   },
   {
     name: "message_build",
-    description: "Send a follow-up instruction to a running build. Cost: 0 credits.",
+    description: "Send a follow-up instruction to a running build. Cost: metered, charged for the compute it uses.",
     method: "POST",
     path: "/v1/builds/{execution_id}/message",
     inputSchema: {

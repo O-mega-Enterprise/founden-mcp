@@ -1,0 +1,36 @@
+# Publishes this package to npm when a release tag (v<version>) is pushed. npm trusts this workflow (npm trusted
+# publishing over OpenID Connect: the package's Settings > Trusted Publisher names this repository and publish.yml),
+# so no npm token exists anywhere and none can expire. Each version carries a provenance attestation that links it to
+# the commit it was built from.
+#
+# The release script of the package's source writes this file at every release; an edit made only here is replaced.
+name: Publish to npm
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - name: The tag names the package's version
+        run: |
+          expected="v$(node -p "require('./package.json').version")"
+          if [ "$GITHUB_REF_NAME" != "$expected" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not name package.json's version ($expected)."
+            exit 1
+          fi
+      # Dependencies install without their own install scripts, since this job can publish; the build runs once, here.
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: npm run build --if-present
+      - run: npm publish --ignore-scripts --access public

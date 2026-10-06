@@ -19,7 +19,7 @@ Progress also streams as Server-Sent Events at `/v1/builds/{execution_id}/stream
 
 ## Credits
 
-1 credit per build. Follow-up messages within an in-progress build are free. Reading status and streaming progress are free.
+A credit is a fixed amount of compute. Starting a build or sending it a message charges nothing up front (credits_used 0): the build is charged as it runs, for the compute it actually uses, so there is no fixed price per build (a build your desktop app picks up runs on your own Claude, ChatGPT or Google AI plan instead and spends desktop credits for what its AI use really costs). Reading status, streaming progress and stopping a build are free.
 
 ## Authentication
 

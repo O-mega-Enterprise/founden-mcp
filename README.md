@@ -24,9 +24,9 @@ Get your API key at https://founden.ai/app/build. One `omk_` key works across al
 
 | Tool | Description |
 |------|-------------|
-| `build_company(prompt, company_id?)` | Start (or continue, on your default company) a build from a plain-language description. Returns an `execution_id`. Costs 1 credit. |
+| `build_company(prompt, company_id?)` | Start (or continue, on your default company) a build from a plain-language description. Returns an `execution_id`. Metered: charged for the compute the build uses. |
 | `get_build(execution_id)` | Get build status and the live preview URL. |
-| `message_build(execution_id, prompt)` | Send a follow-up instruction to a running build (free within a build). |
+| `message_build(execution_id, prompt)` | Send a follow-up instruction to a running build. Metered, like the build. |
 
 ## Example
 
